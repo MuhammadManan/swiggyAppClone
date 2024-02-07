@@ -1,0 +1,1 @@
+console.log('First nodejs project index');
