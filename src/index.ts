@@ -1,5 +1,6 @@
 import * as express from "express";
 import * as mongoose from 'mongoose';
+import { getEnvironmentVariables } from "./environments/environment";
 
 let app: express.Application = express();
 
@@ -7,9 +8,7 @@ app.listen(3000, () => {
   console.log("Server is running at port:3000");
 });
 
-mongoose.connect(
-  "mongodb+srv://muhammadmananazhar1212:0MBV0ANgFNozoPaG@foodapi.ymyrbdf.mongodb.net/"
-).then(() =>{
+mongoose.connect(getEnvironmentVariables().db_uri).then(() =>{
   console.log('Connected to Mongodb');
 });
 
@@ -32,4 +31,3 @@ app.get("/api/owner/login", (req, res) => {
     array: ['test'],
   });
 });
-
