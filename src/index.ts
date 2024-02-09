@@ -68,20 +68,20 @@ function resultBySci(): Promise<string> {
 //     }
 // }
 
-resultByMath()
-  .then((result) => {
-     if(result){
-      resultBySci().then((result)=>{
-        console.log('Sci :', result);
-      }).catch(e=>{
-        console.log('Sci e :',e);
-      })
-     }
-  })
-  .catch((error) => {
-    // console.log("hello");
-    console.log("Error of Math :", error);
-  });
+// resultByMath()
+//   .then((result) => {
+//      if(result){
+//       resultBySci().then((result)=>{
+//         console.log('Sci :', result);
+//       }).catch(e=>{
+//         console.log('Sci e :',e);
+//       })
+//      }
+//   })
+//   .catch((error) => {
+//     // console.log("hello");
+//     console.log("Error of Math :", error);
+//   });
 
 // async function final() {
 //   try {
