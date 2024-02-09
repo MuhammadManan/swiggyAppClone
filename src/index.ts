@@ -7,7 +7,7 @@ app.listen(3000, () => {
 });
 
 function isMathsByXAvailable() {
-  return true;
+  return false;
 }
 
 function isMathsByYAvailable() {
@@ -34,7 +34,7 @@ function isSciByXAvailable() {
 }
 
 function isSciByYAvailable() {
-  return true;
+  return false;
 }
 
 function resultBySci(): Promise<string> {
@@ -68,20 +68,35 @@ function resultBySci(): Promise<string> {
 //     }
 // }
 
-async function final() {
-  try {
-    let result1 = await resultByMath(); 
-    if (result1) result1 = await resultBySci();
-    return result1;
-  } catch (e) {
-    return Promise.reject(e);
-  }
-}
-
-final()
-  .then((data) => {
-    console.log("data :", data);
+resultByMath()
+  .then((result) => {
+     if(result){
+      resultBySci().then((result)=>{
+        console.log('Sci :', result);
+      }).catch(e=>{
+        console.log('Sci e :',e);
+      })
+     }
   })
-  .catch((e) => {
-    console.log("Error :", e);
+  .catch((error) => {
+    // console.log("hello");
+    console.log("Error of Math :", error);
   });
+
+// async function final() {
+//   try {
+//     let result1 = await resultByMath(); 
+//     if (result1) result1 = await resultBySci();
+//     return result1;
+//   } catch (e) {
+//     return Promise.reject(e);
+//   }
+// }
+
+// final()
+//   .then((data) => {
+//     console.log("data :", data);
+//   })
+//   .catch((e) => {
+//     console.log("Error :", e);
+//   });
