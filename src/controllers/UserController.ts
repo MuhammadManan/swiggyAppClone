@@ -3,9 +3,11 @@ export class UserController {
     // console.log('data');
     // const data = [{name:"John"}]
     // res.status(200).send(data);
-    (req as any).errorStatus = 422;
-    const error = new Error('User email or password does not match');
-    next(error);
+    // (req as any).errorStatus = 422;
+    // const error = new Error('User email or password does not match');
+    // next(error);
+
+    res.send(req.body);
   }
   static test1(req,res,next){
     console.log('test');
