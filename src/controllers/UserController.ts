@@ -1,3 +1,5 @@
+import User from "../models/User";
+
 export class UserController {
   static login(req, res, next) {
     // console.log('data');
@@ -6,8 +8,23 @@ export class UserController {
     // (req as any).errorStatus = 422;
     // const error = new Error('User email or password does not match');
     // next(error);
+    // res.send(req.body);
 
-    res.send(req.body);
+    const email = req.body.email;
+    const password = req.body.password;
+
+    const user = new User({
+        email, 
+        password
+    });
+
+    user.save().then((user)=>{
+        res.send(user);
+    }).catch((e)=>{
+        next(e);
+    });
+    
+
   }
   static test1(req,res,next){
     console.log('test');
