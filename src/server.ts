@@ -1,3 +1,4 @@
+import * as bodyParser from "body-parser";
 import * as express from "express";
 import * as mongoose from "mongoose";
 import { getEnvironmentVariables } from "./environments/environment";
@@ -17,12 +18,19 @@ export class Server {
 
   setConfigs() {
     this.connectMongoDB();
+    this.configureBodyParser();
   }
 
   connectMongoDB() {
     mongoose.connect(getEnvironmentVariables().db_uri).then(() => {
       console.log("Connected to Mongodb");
     });
+  }
+
+  configureBodyParser(){
+    this.app.use(bodyParser.urlencoded({
+        extended: true,
+    }));
   }
 
 
