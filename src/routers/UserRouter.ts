@@ -14,12 +14,11 @@ export class UserRouter{
         this.deleteRoutes();
     }
 
-    getRoutes(){
+    getRoutes(){}
+    
+    postRoutes(){
         this.router.post("/signup", UserValidators.signup(), UserController.signup);
-        this.router.get("/test",UserController.test1, UserController.test2);
     }
-
-    postRoutes(){}
     putRoutes(){}
     patchRoutes(){}
     deleteRoutes(){}

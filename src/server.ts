@@ -48,10 +48,11 @@ export class Server {
   }
 
   handlerErrors(){
-    this.app.use((error, req, res, next) => {
+    this.app.use((error,req, res, next) => {
+      // console.log('handler:',error.message);
         const errorStatus = req.errorStatus || 500;
         res.status(errorStatus).json({
-            message: req.message || 'Something went wrong. Please try again!',
+            message: error.message || 'Something went wrong. Please try again!',
             status_code: errorStatus,
         });
     })
