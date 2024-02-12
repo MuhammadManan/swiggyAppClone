@@ -33,12 +33,13 @@ export class Server {
     this.app.use(bodyParser.urlencoded({
         extended: true,
     }));
+    // this.app.use(bodyParser.json());
   }
 
   allowCors(){
     this.app.use(cors());
   }
-  
+
   setRoutes(){
     this.app.use('/api/user', UserRouter);
   }
